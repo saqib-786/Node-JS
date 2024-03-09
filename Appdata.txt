@@ -1,0 +1,3 @@
+Error: ENOENT: no such file or directory, open 'E:\Learning Node JS\Node-JS\Appdata.txt'
+userName=Saqib
+userName=Asad
