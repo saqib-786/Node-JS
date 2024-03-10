@@ -1,20 +1,19 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const Home = require('./Routes/Home');
+const About = require('./Routes/About');
+const Form = require('./Routes/Form');
+const Contact = require('./Routes/Contact');
 
-const server = http.createServer((req,res)=>{
-    if(req.url === '/'){
-        res.write('Hello World!');
-        res.end();
-    }else if(req.url === '/form'){
-        res.setHeader('Content-Type','text/html');
-        res.write('<form> <input name="userName" /> <button>SUBMIT</button> </form>');
-        res.end();
+app.use((req,res,next)=>{
+ req.data = 'Saqib Ali'
+ next()
 
-    }else{
-        res.write('404 - File Not Found');
-        res.end();
-    }
-    
+})
 
-});
+app.use('/',Home);
+app.use('/about',About);
+app.use('/form',Form)
+app.use('/contact',Contact)
 
-server.listen(3000)
+app.listen(3000)
